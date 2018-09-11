@@ -33,14 +33,25 @@ After installation of the Toolbox:
 +
 [source, bash]
 ----
-docker-machine create --driver virtualbox default --virtualbox-memory 6000
+docker-machine create --driver virtualbox --virtualbox-memory 6000 wks
 ----
-* configure the Docker client to use the created previously Docer machine
+* To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run:
 +
 [source, bash]
 ----
-docker-machine env default
-@FOR /f "tokens=*" %i IN ('docker-machine env default') DO @%i
+docker-machine env wks
+----
+* Next run the command from the last line of the output from the previous command
++
+[source, bash]
+----
+@FOR /f "tokens=*" %i IN ('docker-machine env wks') DO @%i
+----
+* Check whether you can manage your Docker machine
++
+[source, bash]
+----
+docker info
 docker ps
 ----
 * Pull the necessary Docker images (to avoid pulling during the workshop)
@@ -57,7 +68,7 @@ docker images
 +
 [source, bash]
 ----
-docker-machine stop default
+docker-machine stop wks
 ----
 
 
