@@ -12,6 +12,12 @@ services:
     ports:
       - 9092:9092
       - 2181:2181
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 10
+        window: 120s
 
   config:
     image: ms-wks/config-service
@@ -25,6 +31,12 @@ services:
       - 8888:8888
     expose:
       - 8888
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 10
+        window: 120s
 
 networks:
   ms-wks:
