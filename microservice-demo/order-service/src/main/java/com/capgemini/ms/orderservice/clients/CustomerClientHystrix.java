@@ -53,7 +53,7 @@ public class CustomerClientHystrix {
   }
 
   public Customer getCustomerFromCache(long id) {
-    if (cacheManager.getCache("customer") != null && cacheManager.getCache("customers").get(SimpleKey.EMPTY) != null) {
+    if (cacheManager.getCache("customer") != null && cacheManager.getCache("customer").get(id) != null) {
       return cacheManager.getCache("customer").get(id, Customer.class);
     } else {
       return null;
